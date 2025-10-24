@@ -186,7 +186,7 @@ const FollowLeadeList = ({ data }) => {
                   <div className="w-100 ac-jc d-flex" ref={dropdownRef}>
                     <button
                       onClick={(e) => {
-                        e.stopPropagation();
+                        e.stopPropagation(); 
                         handleDropdownClick(lead._id);
                       }}
                       // className={`${
