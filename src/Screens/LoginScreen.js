@@ -92,8 +92,10 @@ const LoginScreen = () => {
           setToken(res?.telecaller?.token);
           console.log("restoken", res?.telecaller?.token, "TOkennnn", token);
           toast.success(res?.message || "Login successful");
-          navigate("/telecallers/dashboard");
-          window.location.reload();
+          setTimeout(() => {
+            navigate("/");
+            window.location.reload();
+          }, 500);
         })
         .catch((err) => {
           console.log("Err", err);
