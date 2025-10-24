@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import {
-  check,
-  Cylinder,
   no_view,
   resetgirl,
   shh_logo,
@@ -32,8 +30,8 @@ const ResetPasswordScreen = () => {
     confirmPassword: false,
   });
 
-  const { user, setUser } = useUser();
-  const { token, setToken } = useToken();
+  const { setUser } = useUser();
+  const { setToken } = useToken();
 
   // Api
   const [resetpasswordApi] = useReset_passwordMutation();

@@ -37,7 +37,7 @@ const NewInvoice = ({ invoiceRef, paymentData }) => {
               }}
               className="invoice_logo"
             >
-              <img src={round_logo} />
+              <img src={round_logo} alt=""/>
             </div>
             <div
               style={{

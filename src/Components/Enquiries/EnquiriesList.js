@@ -1,13 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  // eslint-disable-next-line no-unused-vars
   ModeEditOutlined as EditIcon,
+  // eslint-disable-next-line no-unused-vars
   RemoveRedEyeOutlined as ViewIcon,
+  // eslint-disable-next-line no-unused-vars
   ArrowBackIosNewOutlined as PrevIcon,
+  // eslint-disable-next-line no-unused-vars
   ArrowForwardIosOutlined as NextIcon,
   ArrowDropDown as DropDownIcon,
 } from "@mui/icons-material";
-import { leadliststatus, leadstatus } from "../../Data/DummyJson";
+import { leadliststatus } from "../../Data/DummyJson";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import { useLeadeditMutation } from "../../Data/Api/api";

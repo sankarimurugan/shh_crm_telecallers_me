@@ -1,25 +1,14 @@
-import { Phone } from "@mui/icons-material";
 import {
-  calendar_icon,
   dash_blue,
   dash_white,
   enquirie_blue,
   enquirie_white,
-  follow_blue,
-  follow_white,
   leads_blue,
   leads_white,
-  notification_blue,
-  notification_white,
   payment_blue,
   payment_white,
   paymentproof_blue,
   paymentproof_white,
-  perfomance_blue,
-  perfomance_white,
-  perfomreport_blue,
-  perfomreport_white,
-  time_icon,
 } from "../assets/images";
 
 export const loginForm = [

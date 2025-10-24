@@ -16,7 +16,7 @@ const NetworkScreen = () => {
       ) : (
         <div className="d-flex ac-jc notfound_cont w-90 px-5">
           <div className="not_img d-flex ac-jc w-50">
-            <img src={network_err} />
+            <img src={network_err} alt="" />
           </div>
           <div className="notfound_cont w-50 d-flex ac-jc flex-column">
             <div className=" text-start">

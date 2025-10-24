@@ -1,8 +1,7 @@
 import React from "react";
-import { pro_icon, profile_dum } from "../../assets/images";
+import {  profile_dum } from "../../assets/images";
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
-import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
-import AddAPhotoOutlinedIcon from "@mui/icons-material/AddAPhotoOutlined";
+ import AddAPhotoOutlinedIcon from "@mui/icons-material/AddAPhotoOutlined";
 import { useNavigate } from "react-router-dom";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 

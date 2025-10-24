@@ -13,7 +13,7 @@ const LogoutPoppup = ({ poppupHandle }) => {
 
       <div className="logout-cont w-md-40 w-80  rounded-3 p-md-3 p-4 d-flex ac-jc flex-column gap-2">
         <div className="logoutimg">
-          <img src={logout_icon_1} />
+          <img src={logout_icon_1} alt="" />
         </div>
         <p className="red f8 text-center mb-0 fs-xxl-25 fs-xl-25 fs-lg-23 fs-sm-20 fs-xs-19 textani">
           Are You Sure?

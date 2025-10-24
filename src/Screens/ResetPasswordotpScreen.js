@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import {
-  check,
-  Cylinder,
-  no_view,
+  
   otpbg,
   otpresetbg,
-  resetgirl,
   shh_logo,
-  Thorus_Knot,
-  view,
 } from "../assets/images";
 import { useNavigate } from "react-router-dom";
 import { useSend_otpMutation, useVerify_otpMutation } from "../Data/Api/api";

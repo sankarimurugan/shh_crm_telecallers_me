@@ -33,6 +33,7 @@ const PaymentDetails = () => {
 
   useEffect(() => {
     getPayDataFun();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="lead-head">

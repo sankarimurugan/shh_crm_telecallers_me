@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { check, no_view, shh_logo, view } from "../assets/images";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { saveHeaderTitleSlice } from "../Data/Redux/slice/headerTitleSlice";
 import { useLoginMutation } from "../Data/Api/api";
 import useToken from "../Data/Local/userToken";
 import { toast } from "react-toastify";
@@ -11,8 +9,7 @@ import useUser from "../Data/Local/userDetail";
 
 const LoginScreen = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
   const { token, setToken } = useToken();
 
   const [formFeald, setFormFeald] = useState({

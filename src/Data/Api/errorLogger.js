@@ -1,7 +1,6 @@
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import { saveDeactiveSlice } from "../Redux/slice/deactiveSlice";
-import useToken from "../Local/userToken";
-
+ 
 export const rtkQueryErrorLogger =
   ({ dispatch, getState }) =>
   (next) =>
@@ -9,7 +8,7 @@ export const rtkQueryErrorLogger =
     const token = localStorage.getItem("token");
     if (isRejectedWithValue(action)) {
       if (
-        action?.payload?.data?.message ==
+        action?.payload?.data?.message ===
           "Your account has been deactivated. Please contact admin." &&
         token
       ) {

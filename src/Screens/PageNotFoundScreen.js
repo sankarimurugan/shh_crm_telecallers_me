@@ -18,7 +18,7 @@ const PageNotFoundScreen = () => {
       ) : (
         <div className="d-flex ac-jc notfound_cont w-90 px-5">
           <div className="not_img d-flex ac-jc w-50">
-            <img src={notfound} />
+            <img src={notfound} alt="" />
           </div>
           <div className="notfound_cont w-50 d-flex ac-jc flex-column">
             <div className=" text-start">

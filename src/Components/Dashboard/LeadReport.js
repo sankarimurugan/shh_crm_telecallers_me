@@ -7,10 +7,10 @@ const LeadReport = ({ dashLeadData }) => {
   return (
     <div className="leed-report bg-transparent">
       <div className="springcont-top ">
-        <img src={springicon} />
+        <img src={springicon} alt=""/>
       </div>
       <div className="springcont-bottum">
-        <img src={springicon} />
+        <img src={springicon} alt="" />
       </div>
       <div className="leedlay rounded-4 p-md-4">
         <p className="mb-2 f7 primary3 fs-xxl-20 fs-xl-20 fs-lg-19 fs-sm-15 fs-xs-13 textani">
