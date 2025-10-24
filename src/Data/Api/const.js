@@ -4,7 +4,7 @@ export const BASE_URL = "https://shh-backend-me-141f.vercel.app/api/";
 
 export const URL = {
   // LOGIN: "telecallers/addlogintelecaller",
-  LOGIN: "telecallers/addlogintelecaller",
+  LOGIN: "telecallers/logintelecaller",
   LOGOUT: "telecallers/logout",
   LEAD_ADD: "lead/addleadmanage",
   LEAD_VIEW: "lead/getlead",
