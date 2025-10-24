@@ -1,0 +1,114 @@
+@import "./colors.scss";
+
+/* red*/
+@media (max-width: 576px) {
+  .com {
+    background-color: red;
+  }
+  .top-img {
+    height: 17rem !important;
+    width: 17rem !important;
+  }
+  .bottom-img {
+    height: 20rem !important;
+    width: 20rem !important;
+  }
+  .passicon {
+    height: 30px !important;
+    top: 47% !important;
+    width: 26px !important;
+  }
+  .passicon {
+    &.log {
+      height: 30px !important;
+      top: 40% !important;
+      width: 26px !important;
+    }
+  }
+}
+// green
+@media (min-width: 577px) {
+  .com {
+    background-color: green;
+  }
+}
+
+// md
+@media (max-width: 768px) {
+  .inner-text {
+    height: 20px !important;
+    width: 20px !important;
+  }
+  .ressidenav {
+    display: block !important;
+  }
+  .icon-bg {
+    height: 35px !important;
+    width: 35px !important;
+  }
+  .logout-cont {
+    width: 100% !important;
+  }
+  .navigation {
+    z-index: 1000;
+    width: 100vw !important;
+  }
+  .navigation.active {
+    width: 50px;
+    left: -100vw !important;
+  }
+  .input-form {
+    input {
+      height: 33px !important;
+    }
+  }
+  .check {
+    width: 18px !important;
+    height: 18px !important;
+    img {
+      height: 14px !important;
+      width: 14px !important;
+    }
+  }
+  .btns {
+    height: 30px !important;
+  }
+  .main.active {
+  }
+  .main {
+    left: 0 !important;
+    width: 100% !important;
+  }
+}
+// pink
+@media (min-width: 992px) {
+  .com {
+    background-color: pink;
+  }
+}
+// blue
+@media (min-width: 1200px) {
+  .com {
+    background-color: blue;
+  }
+}
+
+// purple
+@media (min-width: 1400px) {
+  .com {
+    background-color: purple;
+  }
+}
+
+@media (min-width: 1600px) {
+}
+
+// palegreen
+@media (max-width: 991px) {
+  .com {
+    background-color: palegreen;
+  }
+}
+
+@media (min-width: 1024px) {
+}

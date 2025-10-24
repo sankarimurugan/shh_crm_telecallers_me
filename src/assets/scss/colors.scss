@@ -1,0 +1,117 @@
+$white: #ffffff;
+$black: #000;
+$red: #f02525;
+$primary: #021d7b;
+$primary1: #0435e1;
+$primary2: #253d90;
+$light_gray: #8f8f8f;
+$light_blue: #cbb4b4;
+$orange: #ff5e00;
+$ltorange: #ffbe44;
+$dark_primary: #173e5e;
+$primary3: #00225d;
+$dark_primary1: #163d5c;
+$serachgray: #919191;
+$yellow: #ffc20e;
+$green: #3f861e;
+$ltgreen: #2aff00;
+$dark_green: #053d28;
+$merun: #840000;
+
+.white {
+  color: $white;
+}
+.black {
+  color: $black;
+}
+.red {
+  color: $red;
+}
+.primarys {
+  color: $primary;
+}
+.primary1 {
+  color: $primary1;
+}
+.primary2 {
+  color: $primary2;
+}
+.primary3 {
+  color: $primary3;
+}
+.light_gray {
+  color: $light_gray;
+}
+.orange {
+  color: $orange;
+}
+.dark_primary {
+  color: $dark_primary;
+}
+.light_blue {
+  color: $light_blue;
+}
+.serachgray {
+  color: $serachgray;
+}
+.merun {
+  color: $merun;
+}
+.dark_green {
+  color: $dark_green;
+}
+.green {
+  color: $green;
+}
+
+// bg
+.bg-white {
+  background: $white;
+}
+
+.bg-black {
+  background: $black;
+}
+.bg-red {
+  background: $red;
+}
+.bg-primarys {
+  background: $primary;
+}
+.bg-primary1 {
+  background: $primary1;
+}
+.bg-primary3 {
+  background: $primary3;
+}
+.bg-light_gray {
+  background: $light_gray;
+}
+.bg-orange {
+  background: $orange;
+}
+.bg-ltorange {
+  background: $ltorange;
+}
+.bg-dark_primary {
+  background: $dark_primary;
+}
+.bg-yellow {
+  background: $yellow;
+}
+.bg-green {
+  background: $green;
+}
+.bg-ltgreen {
+  background: $ltgreen;
+}
+.bg-merun {
+  background: $merun;
+}
+.bg-dark_green {
+  background: $dark_green;
+}
+
+.dark_primary1 {
+  background: $dark_primary1;
+}

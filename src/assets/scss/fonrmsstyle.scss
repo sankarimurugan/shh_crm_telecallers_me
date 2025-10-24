@@ -1,0 +1,226 @@
+.forms-cont {
+  position: relative;
+  .btns-cont {
+    button {
+      height: 50px;
+      width: 200px;
+      border-top: 2.5px solid #4931ee;
+      border-right: 2.5px solid #4931ee;
+      border-bottom: 0;
+      background: #fff;
+      transition: 0.3s ease-in;
+      color: #4931ee;
+      &.active {
+        background: #4931ee !important;
+        color: #ffff !important;
+      }
+      &:nth-child(1) {
+        border-top-left-radius: 20px;
+        border-left: 2.5px solid #4931ee;
+        border-right: 0;
+      }
+      &:nth-child(2) {
+        border-top-right-radius: 20px;
+        border-left: 2.5px solid #4931ee;
+        border-right: 2.5px solid #4931ee;
+      }
+      &:hover {
+        background: #4931ee !important;
+        color: #ffff !important;
+      }
+    }
+  }
+  .bottom-form {
+    border: 2.5px solid #4931ee;
+    background: #fff;
+    border-radius: 10px;
+    transition: 0.2s all linear;
+    .imglayer {
+      height: 150px;
+      width: 150px;
+      //   border: 2.5px solid #4931ee;
+      background: #fff;
+      position: relative;
+      border: 0;
+      transition: 0.2s all linear;
+      &:hover {
+        // border: 2.5px solid #4931ee;
+        background: #4931ee;
+      }
+      &.hoverds {
+        // border: 2.5px solid #4931ee;
+        background: #4931ee;
+        .txt {
+          color: #fff;
+        }
+      }
+      &:hover .txt {
+        color: #fff;
+      }
+      .txt {
+      }
+      img {
+        height: 70%;
+        width: 70%;
+        object-fit: contain;
+      }
+    }
+  }
+  .posi-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background: #4931ee;
+    width: 160px;
+    height: 40px;
+  }
+  .posi-btn2 {
+    // position: absolute;
+    background: #4931ee;
+    width: 200px;
+    height: 40px;
+  }
+
+  .formlayers {
+    .form-cont1 {
+      display: grid;
+      display: -ms-grid;
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      .form-cont {
+        position: relative;
+      }
+      input {
+        height: 43px;
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+      .inpuss {
+        height: 43px;
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+      select {
+        height: 43px;
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+      .error {
+        position: absolute;
+        right: 10px;
+        bottom: -18px;
+      }
+    }
+  }
+}
+
+// responcive start
+@media (max-width: 768px) {
+  .form-cont1 {
+    display: block !important;
+  }
+  .posi-btn {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .cabcont {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .btns-cont {
+    button {
+      width: 100px !important;
+      height: 40px !important;
+    }
+  }
+  .posi-btn {
+    position: relative !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+  .posi-btn2 {
+    position: relative !important;
+    width: 100% !important;
+  }
+}
+// responcive end
+
+.time-cont {
+  input {
+    width: 100px !important;
+    border: 0px;
+  }
+  select {
+    border: 0px;
+  }
+  .react-time-picker {
+    background: #fff;
+    border-radius: 8px;
+    padding: 5px;
+  }
+
+  /* Input Box */
+  .react-time-picker__inputGroup {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  /* Drop-down Buttons */
+  .react-time-picker__wrapper {
+    border: none;
+  }
+
+  /* Clock Icon */
+  .react-time-picker__button {
+    color: #007bff;
+  }
+
+  /* AM/PM Dropdown */
+  .react-time-picker__clock {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.time-picker-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.open-clock-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.open-clock-btn:hover {
+  background-color: #0056b3;
+}
+
+.time-input {
+  display: block;
+  margin: 10px auto;
+  padding: 5px;
+  font-size: 16px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+}
+
+.selected-time {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #333;
+}
+
+/* Time Picker Input Field */
