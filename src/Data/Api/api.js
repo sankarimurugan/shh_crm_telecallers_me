@@ -3,7 +3,7 @@ import { BASE_URL, URL } from "./const";
 
 export const api = createApi({
   reducerPath: "api",
-
+  credentials: "include",
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     prepareHeaders: async (headers, { getState, endpoint }) => {
