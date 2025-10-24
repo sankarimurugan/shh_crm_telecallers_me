@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import SideNavbar from "../Navbar/SideNavbar";
 import TopHeader from "./TopHeader";
-import { topsetting } from "../../assets/images";
 import LogoutPoppup from "../common/Logout/LogoutPoppup";
 import PageLoad from "../common/Loading/PageLoad";
 import useToken from "../../Data/Local/userToken";
@@ -17,7 +16,7 @@ import { useSelector } from "react-redux";
 
 const Layout = () => {
   const navigate = useNavigate();
-  const [isVisible, setIsVisible] = useState(true);
+  const [ setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuactive, setMenuActive] = useState(true);
   const [profileData, ssetProfileData] = useState(null);
@@ -26,7 +25,7 @@ const Layout = () => {
 
   const [logoutpop, setLogoutPop] = useState(false);
 
-  const { token, setToken } = useToken();
+  const {  setToken } = useToken();
   const { user, setUser } = useUser();
 
   const [profileViewApi] = useLazyTelecaller_viewQuery();
@@ -40,7 +39,7 @@ const Layout = () => {
 
   const poppupHandle = (type) => {
     console.log("PageLoad", type);
-    if (type == "yes") {
+    if (type === "yes") {
       setLoad(true);
       logoutApi()
         .unwrap()
@@ -62,9 +61,9 @@ const Layout = () => {
           setLoad(false);
           window.location.reload();
         });
-    } else if (type == "no") {
+    } else if (type === "no") {
       setLogoutPop(false);
-    } else if (type == "clike") {
+    } else if (type === "clike") {
       setLogoutPop(true);
     }
   };
@@ -84,6 +83,7 @@ const Layout = () => {
 
   useEffect(() => {
     getProFun();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -99,6 +99,7 @@ const Layout = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastScrollY]);
   return (
     <>

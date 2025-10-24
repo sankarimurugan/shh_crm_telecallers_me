@@ -11,13 +11,11 @@ const PaymentList = () => {
   const location = useLocation();
   const invoiceRef = useRef();
 
-  const [paymentDatas, setPaymentDatas] = useState({});
   const [loading, setLoadin] = useState(true);
   const [historyData, setHistoryData] = useState([]);
 
   const routeData = location?.state?.data;
   console.log("routeData", routeData);
-  const lead_id = routeData?.lead_id;
   const today = new Date().toISOString().split("T")[0];
 
   // Api
@@ -128,6 +126,7 @@ const PaymentList = () => {
 
   useEffect(() => {
     dataGetFun();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -148,7 +147,7 @@ const PaymentList = () => {
           </button>
         </div>
       )}
-      {!loading && historyData?.length == 0 ? (
+      {!loading && historyData?.length === 0 ? (
         <EmptyComp text={"Payments Not Found"} />
       ) : (
         <ListPayment historyData={historyData} />

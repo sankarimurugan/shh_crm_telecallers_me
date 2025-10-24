@@ -1,14 +1,13 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import {
   logout_icon,
   menu_toggle,
   pro_icon,
   round_logo,
-  topsetting,
 } from "../../assets/images";
 import { SideNavList } from "../../Data/DummyJson";
 import { useLocation, useNavigate } from "react-router-dom";
-import LogoutPoppup from "../common/Logout/LogoutPoppup";
 
 const SideNavbar = ({
   menuactive,
@@ -27,7 +26,7 @@ const SideNavbar = ({
   // Instead of hardcoding the URL
   const imageUrl = profileData?.profileimage || pro_icon;
   const onNavclike = (item) => {
-    if (item?.navi == "logout") {
+    if (item?.navi === "logout") {
       poppupHandle("clike");
     } else {
       navigate(item?.navi);
@@ -47,7 +46,7 @@ const SideNavbar = ({
               <li className="">
                 <div className="d-flex ac-js w-100 border-0 bg-transparent">
                   <div className="icon_box d-flex ac-jc">
-                    <img src={round_logo} />
+                    <img src={round_logo} alt="" />
                   </div>
                 </div>
               </li>
@@ -90,15 +89,15 @@ const SideNavbar = ({
                       onClick={() => {
                         setActiveIndex(index);
                         if (
-                          pathname == item?.navi ||
+                          pathname === item?.navi ||
                           item?.sub?.find(
                             (subItem) => pathname === subItem?.list
                           )
                         ) {
                           setMenuActive(!menuactive);
                         } else if (
-                          // (activeIndex === index && pathname == item?.navi) ||
-                          pathname == item?.navi
+                          // (activeIndex === index && pathname === item?.navi) ||
+                          pathname === item?.navi
                         ) {
                           setMenuActive(false);
                           onNavclike(item);
@@ -108,8 +107,8 @@ const SideNavbar = ({
                         }
                       }}
                       className={`${
-                        (activeIndex === index && pathname == item?.navi) ||
-                        pathname == item?.navi ||
+                        (activeIndex === index && pathname === item?.navi) ||
+                        pathname === item?.navi ||
                         item?.sub?.find((subItem) => pathname === subItem?.list)
                           ? "hovered"
                           : ""
@@ -121,10 +120,11 @@ const SideNavbar = ({
                       <a className="d-flex ac-js">
                         <div className="icon_box_list d-flex ac-jc">
                           <img
+                          alt=""
                             src={
                               (activeIndex === index &&
-                                pathname == item?.navi) ||
-                              pathname == item?.navi ||
+                                pathname === item?.navi) ||
+                              pathname === item?.navi ||
                               item?.sub?.find(
                                 (subItem) => pathname === subItem?.list
                               )
@@ -196,7 +196,7 @@ const SideNavbar = ({
                       }}
                       className="icon_box_list d-flex ac-jc cp"
                     >
-                      <img src={logout_icon} />
+                      <img src={logout_icon} alt="" />
                     </div>
                     {!menuactive && (
                       <span
@@ -218,7 +218,7 @@ const SideNavbar = ({
                     menuactive ? "opacity-0 d-none" : ""
                   } icon_box_list2 bg-transparent border-0`}
                 >
-                  <img src={menu_toggle} />
+                  <img src={menu_toggle} alt="" />
                 </button>
               </div>
               {menuactive && (
@@ -235,7 +235,7 @@ const SideNavbar = ({
                         }}
                         className="icon_box_list d-flex ac-jc"
                       >
-                        <img src={menu_toggle} />
+                        <img src={menu_toggle} alt="" />
                       </div>
                     </a>
                   </li>

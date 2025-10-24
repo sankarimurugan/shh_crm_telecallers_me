@@ -12,7 +12,7 @@ const LeedsTab = ({ tabToggle, toggleFun }) => {
                 toggleFun(item);
               }}
               className={` ${
-                tabToggle?.name == item?.name
+                tabToggle?.name === item?.name
                   ? "bg-primary3 white  "
                   : "primary3 bg-transparent "
               }  toggle-btn togbottum `}

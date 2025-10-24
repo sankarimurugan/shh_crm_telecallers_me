@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { refileicon } from "../assets/images";
 import LeadeList from "../Components/LeadManage/LeadeList";
 import { useLocation, useNavigate } from "react-router-dom";
 import LeedsTab from "../Components/Tab/LeedsTab";
-import FollowupScreen from "./FollowupScreen";
-import FollowLeadeList from "../Components/Followup/FollowLeadeList";
-import CloseFollowLeadeList from "../Components/CloseFollowup/CloseFollowLeadeList";
-import EnrollementLeadeList from "../Components/Enrollement/EnrollementLeadeList";
 import PageLoad from "../Components/common/Loading/PageLoad";
-import { leadsList } from "../Data/DummyJson";
 import { useLazyLead_listQuery } from "../Data/Api/api";
 import EmptyComp from "../Components/common/Empty/EmptyComp";
 import useUser from "../Data/Local/userDetail";
-import { FaSearch } from "react-icons/fa";
 import ExportPoppup from "../Components/Poppup/ExportPoppup";
 import ImportPoppup from "../Components/Poppup/ImportPoppup";
 
@@ -27,10 +20,9 @@ const LeadsListScreen = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { user, setUser } = useUser();
+  const { user } = useUser();
   console.log("telssuser", user);
 
-  const telID = user?.telecaller?.id;
 
   // Api
   const [leadGetApi] = useLazyLead_listQuery();
@@ -73,12 +65,12 @@ const LeadsListScreen = () => {
   };
 
   useEffect(() => {
-    if (tab == "Enrollment") {
+    if (tab==="Enrollment") {
       setTabToggle({
         id: 4,
         name: "Enrollment",
       });
-    } else if (tab == "Follow-ups") {
+    } else if (tab==="Follow-ups") {
       setTabToggle({
         id: 2,
         name: "Follow-ups",
@@ -90,16 +82,17 @@ const LeadsListScreen = () => {
       });
     }
     dataGetFun();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tab]);
 
-  const allleads = leadData.filter((lead) => lead.status !== "Enquiry");
-  const followledLeads = leadData.filter(
-    (lead) => lead.status === "Follow Ups"
-  );
-  const closefollowledLeads = leadData.filter(
-    (lead) => lead.status === "Close Follow Ups"
-  );
-  const enrolledLeads = leadData.filter((lead) => lead.status === "Enrollment");
+  // const allleads = leadData.filter((lead) => lead.status !== "Enquiry");
+  // const followledLeads = leadData.filter(
+  //   (lead) => lead.status === "Follow Ups"
+  // );
+  // const closefollowledLeads = leadData.filter(
+  //   (lead) => lead.status === "Close Follow Ups"
+  // );
+  // const enrolledLeads = leadData.filter((lead) => lead.status === "Enrollment");
 
   const tabConfigs = [
     {
@@ -199,8 +192,8 @@ const LeadsListScreen = () => {
   return (
     <div className="lead-head pt-1">
       {loading && <PageLoad />}
-      {exportImp == "export" && <ExportPoppup poppupHandle={exportFun} />}
-      {exportImp == "import" && <ImportPoppup poppupHandle={exportFun} />}
+      {exportImp==="export" && <ExportPoppup poppupHandle={exportFun} />}
+      {exportImp==="import" && <ImportPoppup poppupHandle={exportFun} />}
       {!loading && (
         <div className="lead-h d-flex ac-jb">
           {leadData?.length > 0 && (

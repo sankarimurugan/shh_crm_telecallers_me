@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  ModeEditOutlined as EditIcon,
-  RemoveRedEyeOutlined as ViewIcon,
-  ArrowBackIosNewOutlined as PrevIcon,
-  ArrowForwardIosOutlined as NextIcon,
   ArrowDropDown as DropDownIcon,
 } from "@mui/icons-material";
-import { leadliststatus, leadstatus } from "../../Data/DummyJson";
+import { leadliststatus } from "../../Data/DummyJson";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import { useLeadeditMutation } from "../../Data/Api/api";
@@ -207,7 +203,7 @@ const LeadeList = ({ data, setLoadin, dataGetFun }) => {
                           }
                         }}
                         className={` ${
-                          lead?.status == "Enrollment" && "ac-jc"
+                          lead?.status==="Enrollment" && "ac-jc"
                         } ${
                           lead?.status !== "Enrollment" && "ac-jb"
                         } table-drop border-0 d-flex px-3 rounded-5 ${getStatusColor(
@@ -259,7 +255,7 @@ const LeadeList = ({ data, setLoadin, dataGetFun }) => {
                     )}
                     {lead?.fullyPaid ? (
                       <CheckCircleIcon className="dark_green" />
-                    ) : !lead?.fullyPaid && lead?.paid_amount == 0 ? (
+                    ) : !lead?.fullyPaid && lead?.paid_amount===0 ? (
                       "-"
                     ) : (
                       <PendingOutlinedIcon className="orange" />
@@ -292,7 +288,7 @@ const LeadeList = ({ data, setLoadin, dataGetFun }) => {
             }
             disabled={currentPage === totalPages}
             className={`${
-              currentPage == totalPages ? "opacity-25" : "opacity-100"
+              currentPage===totalPages ? "opacity-25" : "opacity-100"
             } px-3 py-1 mx-1 border-0 rounded white bg-primary3`}
           >
             <ArrowForwardIosOutlinedIcon />

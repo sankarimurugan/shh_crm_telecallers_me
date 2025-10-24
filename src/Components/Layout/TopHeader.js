@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import { topmain, topnoti, topsetting } from "../../assets/images";
+import { topnoti } from "../../assets/images";
 import MenuOpenOutlinedIcon from "@mui/icons-material/MenuOpenOutlined";
 import { useLocation, useNavigate } from "react-router-dom";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
@@ -22,7 +21,7 @@ const TopHeader = ({ toggleFun }) => {
   const notifications = useSelector((state) => state?.saveNotificationSlice);
   console.log("headerTitleSlice", headerTitleSlice, path);
   const logoutRef = useRef(null);
-  const [logoutToggle, setLogoutToggle] = useState(false);
+  const [ setLogoutToggle] = useState(false);
   const [statusCheck, setStatusCheck] = useState(null);
   const [btndiss, setBtnDiss] = useState(false);
 
@@ -32,46 +31,47 @@ const TopHeader = ({ toggleFun }) => {
   const [attenanceStatusApi] = useLazyAttendance_statusQuery();
 
   useEffect(() => {
-    if (path == "/telecallers/dashboard" || path == "/") {
+    if (path === "/telecallers/dashboard" || path === "/") {
       dispatch(saveHeaderTitleSlice("Dashboard"));
     } else if (
-      path == "/telecallers/leads" ||
-      path == "/telecallers/leads/details"
+      path === "/telecallers/leads" ||
+      path === "/telecallers/leads/details"
     ) {
       dispatch(saveHeaderTitleSlice("Lead Management "));
-    } else if (path == "/telecallers/payment-updates") {
+    } else if (path === "/telecallers/payment-updates") {
       dispatch(saveHeaderTitleSlice("Finance"));
-    } else if (path == "/telecallers/payment-updates/payment-list") {
+    } else if (path === "/telecallers/payment-updates/payment-list") {
       dispatch(saveHeaderTitleSlice("Payment List"));
     } else if (
-      path == "/telecallers/payment-updates/payment-list/payment-detalis"
+      path === "/telecallers/payment-updates/payment-list/payment-detalis"
     ) {
       dispatch(saveHeaderTitleSlice(" Payment Receipt"));
-    } else if (path == "/telecallers/close_followup/details") {
+    } else if (path === "/telecallers/close_followup/details") {
       dispatch(saveHeaderTitleSlice("Close Follow-up Details"));
-    } else if (path == "/telecallers/followup/details") {
+    } else if (path === "/telecallers/followup/details") {
       dispatch(saveHeaderTitleSlice("Follow-up Details"));
-    } else if (path == "/telecallers/enrollment/details") {
+    } else if (path === "/telecallers/enrollment/details") {
       dispatch(saveHeaderTitleSlice("Enrollment Details"));
-    } else if (path == "/telecallers/payment-proof") {
+    } else if (path === "/telecallers/payment-proof") {
       dispatch(saveHeaderTitleSlice("Payment Proofs"));
-    } else if (path == "/telecallers/payment-proof/add") {
+    } else if (path === "/telecallers/payment-proof/add") {
       dispatch(saveHeaderTitleSlice("Add Payment Proofs"));
-    } else if (path == "/telecallers/payment-proof/view") {
+    } else if (path === "/telecallers/payment-proof/view") {
       dispatch(saveHeaderTitleSlice("Payment Proofs"));
-    } else if (path == "/telecallers/profile") {
+    } else if (path === "/telecallers/profile") {
       dispatch(saveHeaderTitleSlice("Profile"));
-    } else if (path == "/telecallers/notification") {
+    } else if (path === "/telecallers/notification") {
       dispatch(saveHeaderTitleSlice("Notification"));
-    } else if (path == "/telecallers/enquiries") {
+    } else if (path === "/telecallers/enquiries") {
       dispatch(saveHeaderTitleSlice("Enquiry"));
-    } else if (path == "/telecallers/enquiries/details") {
+    } else if (path === "/telecallers/enquiries/details") {
       dispatch(saveHeaderTitleSlice("Enquiry Details"));
-    } else if (path == "/telecallers/leads/add") {
+    } else if (path === "/telecallers/leads/add") {
       dispatch(saveHeaderTitleSlice("Lead Add"));
     } else {
       dispatch(saveHeaderTitleSlice("Not A heading"));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerTitleSlice, location, window]);
 
   useEffect(() => {
@@ -85,6 +85,7 @@ const TopHeader = ({ toggleFun }) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getcheckinStatus = () => {
@@ -104,6 +105,7 @@ const TopHeader = ({ toggleFun }) => {
 
   useEffect(() => {
     getcheckinStatus();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -144,7 +146,7 @@ const TopHeader = ({ toggleFun }) => {
             disabled={btndiss}
             onClick={() => {
               setBtnDiss(true);
-              if (statusCheck?.status == "checked_out") {
+              if (statusCheck?.status === "checked_out") {
                 checkinApi()
                   .unwrap()
                   .then((res) => {
@@ -169,12 +171,12 @@ const TopHeader = ({ toggleFun }) => {
               }
             }}
             className={`badge d-flex ac-jc f2 fs-xxl-13 fs-xl-13 fs-lg-12 fs-sm-11 fs-xs-11 ${
-              statusCheck?.status == "checked_out"
+              statusCheck?.status === "checked_out"
                 ? " pending-btn px-3 py-0"
                 : "verified-btn px-3 py-0"
             }`}
           >
-            {statusCheck?.status == "checked_out"
+            {statusCheck?.status === "checked_out"
               ? "Checked Out"
               : "Checked In"}
           </button>
@@ -188,6 +190,7 @@ const TopHeader = ({ toggleFun }) => {
             </div>
           )}
           <img
+          alt=""
             src={topnoti}
             onClick={() => {
               navigate("/telecallers/notification");

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { refileicon } from "../assets/images";
-import { useNavigate } from "react-router-dom";
 
 import PaymentUpdatesList from "../Components/PaymentManage/PaymentUpdatesList";
 import PageLoad from "../Components/common/Loading/PageLoad";
@@ -8,7 +6,6 @@ import { useLazyAllpayment_listQuery } from "../Data/Api/api";
 import EmptyComp from "../Components/common/Empty/EmptyComp";
 
 const PaymentUpdates = () => {
-  const navigate = useNavigate();
   const [loading, setLoadin] = useState(true);
   const [paymentlist, setPaymentlist] = useState([]);
 
@@ -33,6 +30,7 @@ const PaymentUpdates = () => {
 
   useEffect(() => {
     dataGetFun();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="lead-head">
@@ -47,7 +45,7 @@ const PaymentUpdates = () => {
           </button>
         </div> */}
       {/* </div> */}
-      {!loading && paymentlist?.length == 0 ? (
+      {!loading && paymentlist?.length === 0 ? (
         <EmptyComp text={"Payments Not Found"} />
       ) : (
         !loading && <PaymentUpdatesList paymentlist={paymentlist} />

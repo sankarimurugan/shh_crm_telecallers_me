@@ -83,17 +83,17 @@ const FollowupDetailScreen = () => {
         }
         break;
       case "followupdate":
-        if (!stringValue && formFeald?.status == "Follow Ups") {
+        if (!stringValue && formFeald?.status === "Follow Ups") {
           errorMsg = "Followup Date and Followup Time is required!";
         }
         break;
       case "followuptime":
-        if (!stringValue && formFeald?.status == "Follow Ups") {
+        if (!stringValue && formFeald?.status === "Follow Ups") {
           errorMsg = "Followup Date and Followup Time is required!";
         }
         break;
       case "enrollement_date":
-        if (!stringValue && formFeald?.status == "Enrollment") {
+        if (!stringValue && formFeald?.status === "Enrollment") {
           errorMsg = "Enrollment Date is required!";
         }
         break;
@@ -170,7 +170,7 @@ const FollowupDetailScreen = () => {
                 {leadaddform?.map((item) => {
                   return (
                     <>
-                      {item?.type == "dropdown" ? (
+                      {item?.type === "dropdown" ? (
                         <div className="w-45">
                           <p className="f6 px-1 fs-xxl-18 fs-xl-17 fs-lg-16 fs-sm-15 fs-xs-13 textani primary2 mb-0">
                             {item?.lable}
@@ -311,7 +311,7 @@ const FollowupDetailScreen = () => {
                     )}
                   </div>
                 </div>
-                {formFeald?.status == "Follow Ups" && (
+                {formFeald?.status === "Follow Ups" && (
                   <div className="w-45 two_inputs position-relative">
                     <p className="f6 px-1 fs-xxl-18 fs-xl-17 fs-lg-16 fs-sm-15 fs-xs-13 textani primary2 mb-0">
                       Follow-up
@@ -355,7 +355,7 @@ const FollowupDetailScreen = () => {
                     )}
                   </div>
                 )}
-                {formFeald?.status == "Enrollment" && (
+                {formFeald?.status === "Enrollment" && (
                   <div className="w-45">
                     <p className="f6 px-1 fs-xxl-18 fs-xl-17 fs-lg-16 fs-sm-15 fs-xs-13 textani primary2 mb-0">
                       Enrollment Date
@@ -379,7 +379,7 @@ const FollowupDetailScreen = () => {
               </div>
             </fieldset>
           </div>
-          {type == "edit" && (
+          {type === "edit" && (
             <div className="cust-sendbtn d-flex ac-jc w-100">
               <button
                 onClick={() => {
@@ -400,12 +400,12 @@ const FollowupDetailScreen = () => {
             <div className="shadow-layer">
               <div
                 className={`${
-                  messages?.length == 0
+                  messages?.length === 0
                     ? ""
                     : "text-scroll p-3 d-flex flex-column w-100 as-js gap-3"
                 } text-scroll p-3 d-flex flex-column w-100 as-js gap-3 rounded-3 `}
               >
-                {messages?.length == 0 ? (
+                {messages?.length === 0 ? (
                   <div className="">
                     <p className="f4 px-1 fs-xxl-16 fs-xl-17 fs-lg-16 fs-sm-16 fs-xs-15 textani light_blue mb-0">
                       Add Notes here...
@@ -445,7 +445,7 @@ const FollowupDetailScreen = () => {
                 )}
                 <div ref={messagesEndRef} />
               </div>
-              {type == "edit" && (
+              {type === "edit" && (
                 <div className="d-flex ac-jb bg-light_blue text-areacont px-2 w-100 py-2">
                   <textarea
                     placeholder="Type here..."

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import {
-  courselist,
   leadaddform,
   leadsformtatus,
   leadstatus,
@@ -10,7 +9,6 @@ import { calendar_icon, time_icon } from "../assets/images";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { City, State } from "country-state-city";
-import PostalCodes from "postal-codes-js";
 import PageLoad from "../Components/common/Loading/PageLoad";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
@@ -207,22 +205,22 @@ const LeadManageDetailScreen = () => {
         }
         break;
       case "followupdate":
-        if (!stringValue && formFeald?.status == "Follow Ups") {
+        if (!stringValue && formFeald?.status === "Follow Ups") {
           errorMsg = "Followup Date and Followup Time is required!";
         }
         break;
       case "followuptime":
-        if (!stringValue && formFeald?.status == "Follow Ups") {
+        if (!stringValue && formFeald?.status === "Follow Ups") {
           errorMsg = "Followup Date and Followup Time is required!";
         }
         break;
       case "enrollement_date":
-        if (!stringValue && formFeald?.status == "Enrollment") {
+        if (!stringValue && formFeald?.status === "Enrollment") {
           errorMsg = "Enrollment Date is required!";
         }
         break;
       case "interested_course":
-        if (!stringValue && formFeald?.interested_course == 0) {
+        if (!stringValue && formFeald?.interested_course === 0) {
           errorMsg = "Tnterested Course is required!";
         }
         break;
@@ -328,7 +326,7 @@ const LeadManageDetailScreen = () => {
 
       console.log("payload", payload);
       setLoadin(true);
-      if (type == "edit") {
+      if (type === "edit") {
         const id = routData?._id;
         leadeditApi({ payload, id })
           .unwrap()
@@ -455,13 +453,14 @@ const LeadManageDetailScreen = () => {
   };
 
   useEffect(() => {
-    if (type == "edit") {
+    if (type === "edit") {
       setEditbtn(true);
       dataGetFun();
       getNotsFun();
     } else {
       getSourceFun();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log("fullData", fullData);
@@ -470,7 +469,7 @@ const LeadManageDetailScreen = () => {
     <div ref={scrollRef} className="detaile-cont">
       {leadnotpop && <LeadNotAssign />}
       {loading && <PageLoad />}
-      {type == "edit" && !loading && (
+      {type === "edit" && !loading && (
         <div className="w-100 d-flex ac-je">
           <button
             onClick={() => {
@@ -492,7 +491,7 @@ const LeadManageDetailScreen = () => {
                 <legend className="f3 px-1 fs-xxl-20 fs-xl-20 fs-lg-19 fs-sm-15 fs-xs-13 textani black mb-0">
                   Personal Details
                 </legend>
-                {type == "edit" && editbtn && (
+                {type === "edit" && editbtn && (
                   <button
                     onClick={() => {
                       setEditbtn(false);
@@ -512,14 +511,14 @@ const LeadManageDetailScreen = () => {
                   {leadaddform?.map((item) => {
                     return (
                       <>
-                        {item?.type == "dropdown" ? (
+                        {item?.type === "dropdown" ? (
                           <div className="w-45">
                             <p className="f6 px-1 fs-xxl-18 fs-xl-17 fs-lg-16 fs-sm-15 fs-xs-13 textani primary2 mb-0">
                               {item?.lable}
                             </p>
                             <div className="lead_drop position-relative">
                               <select
-                                disabled={type == "edit" && editbtn}
+                                disabled={type === "edit" && editbtn}
                                 value={formFeald?.[item?.formFeald] || ""}
                                 onChange={(e) => {
                                   fealdOnChange(
@@ -532,7 +531,7 @@ const LeadManageDetailScreen = () => {
                                 <option value="" disabled hidden selected>
                                   Select {item?.selectplace}
                                 </option>
-                                {(item?.formFeald == "source"
+                                {(item?.formFeald === "source"
                                   ? sourceLis
                                   : item?.list
                                 )?.map((option) => (
@@ -554,14 +553,14 @@ const LeadManageDetailScreen = () => {
                               )}
                             </div>
                           </div>
-                        ) : item?.type == "citydropdown" ? (
+                        ) : item?.type === "citydropdown" ? (
                           <div className="w-45">
                             <p className="f6 px-1 fs-xxl-18 fs-xl-17 fs-lg-16 fs-sm-15 fs-xs-13 textani primary2 mb-0">
                               {item?.lable}
                             </p>
                             <div className="lead_drop position-relative">
                               <select
-                                disabled={type == "edit" && editbtn}
+                                disabled={type === "edit" && editbtn}
                                 value={formFeald?.city?.name || ""}
                                 // onChange={(e) => {
                                 //   fealdOnChange(item?.formFeald, e.target.value);
@@ -597,14 +596,14 @@ const LeadManageDetailScreen = () => {
                               )}
                             </div>
                           </div>
-                        ) : item?.type == "dropdownstate" ? (
+                        ) : item?.type === "dropdownstate" ? (
                           <div className="w-45">
                             <p className="f6 px-1 fs-xxl-18 fs-xl-17 fs-lg-16 fs-sm-15 fs-xs-13 textani primary2 mb-0">
                               {item?.lable}
                             </p>
                             <div className="lead_drop position-relative">
                               <select
-                                disabled={type == "edit" && editbtn}
+                                disabled={type === "edit" && editbtn}
                                 value={formFeald?.state?.name || ""}
                                 // onChange={(e) => {
                                 //   fealdOnChange("state", e.target.value);
@@ -646,7 +645,7 @@ const LeadManageDetailScreen = () => {
                               {item?.lable}
                             </p>
                             <input
-                              disabled={type == "edit" && editbtn}
+                              disabled={type === "edit" && editbtn}
                               type={item?.type}
                               value={formFeald?.[item?.formFeald]}
                               onChange={(e) => {
@@ -681,7 +680,7 @@ const LeadManageDetailScreen = () => {
                       Status*
                     </p>
                     <div className="lead_drop position-relative">
-                      {type == "edit" && fullData?.status == "Enrollment" ? (
+                      {type==="edit" && fullData?.status==="Enrollment" ? (
                         <select
                           disabled
                           value={fullData?.status}
@@ -707,7 +706,7 @@ const LeadManageDetailScreen = () => {
                         </select>
                       ) : (
                         <select
-                          disabled={type == "edit" && editbtn}
+                          disabled={type==="edit" && editbtn}
                           value={formFeald?.status}
                           onChange={(e) => {
                             fealdOnChange("status", e.target.value);
@@ -744,14 +743,14 @@ const LeadManageDetailScreen = () => {
                       Interested Course*
                     </p>
                     <div className="lead_drop position-relative">
-                      {fullData?.status == "Enrollment" ? (
+                      {fullData?.status==="Enrollment" ? (
                         <select
                           disabled
                           value={formFeald?.interested_course?._id || ""}
                           onChange={(e) => {
                             const selectedId = e.target.value;
                             const selectedCourse = courseList.find(
-                              (s) => s._id == selectedId
+                              (s) => s._id===selectedId
                             );
 
                             fealdOnChange("interested_course", selectedCourse); // ⭐ Store FULL object
@@ -774,12 +773,12 @@ const LeadManageDetailScreen = () => {
                         </select>
                       ) : (
                         <select
-                          disabled={type == "edit" && editbtn}
+                          disabled={type==="edit" && editbtn}
                           value={formFeald?.interested_course?._id || ""}
                           onChange={(e) => {
                             const selectedId = e.target.value;
                             const selectedCourse = courseList.find(
-                              (s) => s._id == selectedId
+                              (s) => s._id===selectedId
                             );
 
                             fealdOnChange("interested_course", selectedCourse); // ⭐ Store FULL object
@@ -809,7 +808,7 @@ const LeadManageDetailScreen = () => {
                       )}
                     </div>
                   </div>
-                  {formFeald?.status == "Follow Ups" && (
+                  {formFeald?.status==="Follow Ups" && (
                     <div className="w-45 two_inputs position-relative">
                       <p className="f6 px-1 fs-xxl-18 fs-xl-17 fs-lg-16 fs-sm-15 fs-xs-13 textani primary2 mb-0">
                         Follow-up
@@ -817,10 +816,10 @@ const LeadManageDetailScreen = () => {
                       <div className="d-flex ac-jc input_one rounded-2 gap-3 px-2">
                         <div className="d-flex ac-jb w-50 gap-1 ">
                           <div className="insideinpput d-flex ac-jc">
-                            <img src={calendar_icon} />
+                            <img alt="" src={calendar_icon} />
                           </div>
                           <input
-                            disabled={type == "edit" && editbtn}
+                            disabled={type==="edit" && editbtn}
                             type="date"
                             className="w-100 f4 black fs-xxl-15 fs-xl-15 fs-lg-14 fs-sm-14 fs-xs-13 textani"
                             placeholder="Date"
@@ -833,10 +832,10 @@ const LeadManageDetailScreen = () => {
                         <div className="v-line" />
                         <div className="d-flex ac-jc w-50 gap-1">
                           <div className="insideinpput d-flex ac-jb">
-                            <img src={time_icon} />
+                            <img alt="" src={time_icon} />
                           </div>
                           <input
-                            disabled={type == "edit" && editbtn}
+                            disabled={type==="edit" && editbtn}
                             className="w-100 f4 black fs-xxl-15 fs-xl-15 fs-lg-14 fs-sm-14 fs-xs-13 textani"
                             placeholder="Time"
                             value={formFeald?.followuptime}
@@ -855,16 +854,16 @@ const LeadManageDetailScreen = () => {
                       )}
                     </div>
                   )}
-                  {formFeald?.status == "Enrollment" && (
+                  {formFeald?.status==="Enrollment" && (
                     <div className="w-45">
                       <p className="f6 px-1 fs-xxl-18 fs-xl-17 fs-lg-16 fs-sm-15 fs-xs-13 textani primary2 mb-0">
                         Enrollment Date
                       </p>
                       <div className="d-flex ac-js input_twoss rounded-2 px-2 gap-2">
                         <div className="insideinpput d-flex ac-jc">
-                          <img src={calendar_icon} />
+                          <img alt="" src={calendar_icon} />
                         </div>
-                        {fullData?.status == "Enrollment" ? (
+                        {fullData?.status==="Enrollment" ? (
                           <input
                             disabled
                             type={"date"}
@@ -877,7 +876,7 @@ const LeadManageDetailScreen = () => {
                           />
                         ) : (
                           <input
-                            disabled={type == "edit" && editbtn}
+                            disabled={type==="edit" && editbtn}
                             type={"date"}
                             value={formFeald?.enrollement_date}
                             onChange={(e) => {
@@ -901,7 +900,7 @@ const LeadManageDetailScreen = () => {
                   }}
                   className="btn-sub border-0 bg-primary3 white f4 fs-xxl-18 fs-xl-18 fs-lg-17 fs-sm-16 fs-xs-15 rounded-3 textani"
                 >
-                  {type == "add" ? "Submit" : "Update"}
+                  {type==="add" ? "Submit" : "Update"}
                 </button>
               </div>
             )}
@@ -915,12 +914,12 @@ const LeadManageDetailScreen = () => {
                 <div className="shadow-layer">
                   <div
                     className={`${
-                      messages?.length == 0
+                      messages?.length===0
                         ? ""
                         : "text-scroll p-3 d-flex flex-column w-100 as-js gap-3"
                     } text-scroll p-3 d-flex flex-column w-100 as-js gap-3 rounded-3 `}
                   >
-                    {messages?.length == 0 ? (
+                    {messages?.length===0 ? (
                       <div className="">
                         <p className="f4 px-1 fs-xxl-16 fs-xl-17 fs-lg-16 fs-sm-16 fs-xs-15 textani light_blue mb-0">
                           Add Notes here...

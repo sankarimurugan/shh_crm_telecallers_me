@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import ProfileTop from "../Components/Profile/ProfileTop";
-import { profileFieald } from "../Data/DummyJson";
-import { useNavigate } from "react-router-dom";
 import PageLoad from "../Components/common/Loading/PageLoad";
 import ActivePoppup from "../Components/Poppup/ActivePoppup";
 import useToken from "../Data/Local/userToken";
@@ -13,15 +11,14 @@ import {
 import { toast } from "react-toastify";
 
 const ProfileScreen = () => {
-  const navigate = useNavigate();
-  const [formFeald, setFormFeald] = useState({
+  const [setFormFeald] = useState({
     name: "",
     email: "",
     phoneno: "",
     role: "",
   });
   const [loading, setLoadin] = useState(true);
-  const [errors, setErrors] = useState({});
+  // const [setErrors] = useState({});
   const [edit, setEdit] = useState(false);
   const [fullData, setFullData] = useState(null);
   const fileInputRef = useRef(null);
@@ -30,7 +27,7 @@ const ProfileScreen = () => {
   const [active, setAcvtive] = useState(true);
   const [activePoppup, setAcvtivePoppup] = useState(false);
 
-  const { token, setToken } = useToken();
+  const { setToken } = useToken();
   const { user, setUser } = useUser();
 
   // Api
@@ -39,57 +36,49 @@ const ProfileScreen = () => {
 
   console.log("useuseruserr", user);
 
-  const fealdOnChange = (field, value) => {
-    setFormFeald((state) => ({
-      ...state,
-      [field]: value,
-    }));
-    validateInput(field, value);
-  };
+  // const validateInput = (field, value) => {
+  //   let errorMsg = "";
+  //   const stringValue = String(value).trim();
 
-  const validateInput = (field, value) => {
-    let errorMsg = "";
-    const stringValue = String(value).trim();
+  //   switch (field) {
+  //     case "name":
+  //       if (!stringValue) errorMsg = " Name is required!";
+  //       break;
+  //     case "email":
+  //       if (!stringValue) {
+  //         errorMsg = "Email is required!";
+  //       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(stringValue)) {
+  //         errorMsg = "Enter a valid Email!";
+  //       }
+  //       break;
+  //     case "phoneno":
+  //       if (!stringValue) {
+  //         errorMsg = "Phone number is required!";
+  //       } else if (!/^[6-9]\d{9}$/.test(stringValue)) {
+  //         errorMsg = "Enter a valid 10-digit phone number!";
+  //       }
+  //       break;
+  //     default:
+  //       break;
+  //   }
 
-    switch (field) {
-      case "name":
-        if (!stringValue) errorMsg = " Name is required!";
-        break;
-      case "email":
-        if (!stringValue) {
-          errorMsg = "Email is required!";
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(stringValue)) {
-          errorMsg = "Enter a valid Email!";
-        }
-        break;
-      case "phoneno":
-        if (!stringValue) {
-          errorMsg = "Phone number is required!";
-        } else if (!/^[6-9]\d{9}$/.test(stringValue)) {
-          errorMsg = "Enter a valid 10-digit phone number!";
-        }
-        break;
-      default:
-        break;
-    }
+  //   setErrors((prevErrors) => ({
+  //     ...prevErrors,
+  //     [field]: errorMsg,
+  //   }));
 
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [field]: errorMsg,
-    }));
+  //   return !errorMsg;
+  // };
 
-    return !errorMsg;
-  };
-
-  const handleSubmit = () => {
-    const isValid = Object.keys(formFeald).every((field) =>
-      validateInput(field, formFeald[field])
-    );
-    if (isValid) {
-      console.log("SuccccformFeald", formFeald);
-      setEdit(false);
-    }
-  };
+  // const handleSubmit = () => {
+  //   const isValid = Object.keys(formFeald).every((field) =>
+  //     validateInput(field, formFeald[field])
+  //   );
+  //   if (isValid) {
+  //     console.log("SuccccformFeald", formFeald);
+  //     setEdit(false);
+  //   }
+  // };
 
   const getUserDataFun = () => {
     setLoadin(true);
@@ -131,7 +120,7 @@ const ProfileScreen = () => {
   };
 
   const editToggle = (item) => {
-    if (item == "save") {
+    if (item === "save") {
       if (imageObj) {
         setLoadin(true);
         let formdata = new FormData();
@@ -171,6 +160,7 @@ const ProfileScreen = () => {
 
   useEffect(() => {
     getUserDataFun();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // const dataGetFun = () => {
@@ -181,9 +171,9 @@ const ProfileScreen = () => {
   // }, []);
 
   const toggleActiveFun = (type) => {
-    if (type == "btn") {
+    if (type === "btn") {
       setAcvtivePoppup(true);
-    } else if (type == "yes" && active) {
+    } else if (type === "yes" && active) {
       setAcvtivePoppup(true);
       setLoadin(true);
       setToken(null);
@@ -193,7 +183,7 @@ const ProfileScreen = () => {
         setAcvtivePoppup(false);
         setAcvtive(false);
       }, 1000);
-    } else if (type == "no" && !active) {
+    } else if (type === "no" && !active) {
       setAcvtivePoppup(true);
       setLoadin(true);
       setTimeout(() => {
@@ -201,7 +191,7 @@ const ProfileScreen = () => {
         setAcvtivePoppup(false);
         setAcvtive(true);
       }, 1000);
-    } else if (type == "no") {
+    } else if (type === "no") {
       setAcvtivePoppup(false);
     }
   };

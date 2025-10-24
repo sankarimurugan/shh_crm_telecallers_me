@@ -254,7 +254,7 @@ const EnquiriesList = ({ data, leadListFun, setLoading }) => {
             }
             disabled={currentPage === totalPages}
             className={`${
-              currentPage == totalPages ? "opacity-25" : "opacity-100"
+              currentPage === totalPages ? "opacity-25" : "opacity-100"
             } px-3 py-1 mx-1 border-0 rounded white bg-primary3`}
           >
             <ArrowForwardIosOutlinedIcon />

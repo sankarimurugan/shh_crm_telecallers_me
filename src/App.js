@@ -4,16 +4,14 @@ import NetworkScreen from "./Screens/NetworkScreen";
 import { useLazyNotificationlistQuery } from "./Data/Api/api";
 import { round_logo } from "./assets/images";
 import { useNavigate } from "react-router-dom"; // Import if using React Router
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { saveNotificationSlice } from "./Data/Redux/slice/notificationSlice";
-import AccountActive from "./Components/Poppup/AccountActive";
 
 // Global variable to store navigation function
 let navigateToNotifications = null;
 
 const App = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const activestatus = useSelector((store) => store?.saveDeactiveSlice);
   const [getNotification] = useLazyNotificationlistQuery();
   const lastNotificationRef = useRef(null);
   const dispatch = useDispatch();

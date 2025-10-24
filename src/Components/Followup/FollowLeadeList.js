@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { droparrow } from "../../assets/images";
-import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
-import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import { leadliststatus, leadsList, leadstatus } from "../../Data/DummyJson";
+import { leadliststatus } from "../../Data/DummyJson";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useNavigate } from "react-router-dom";
+
 
 const FollowLeadeList = ({ data }) => {
   const navigate = useNavigate();
@@ -202,10 +200,8 @@ const FollowLeadeList = ({ data }) => {
                     >
                       <p className="mb-0 ">
                         {(selectedStatus[lead?._id] || lead?.status)?.trim()}
-                        {/* {selectedStatus[lead._id] || "Enrollment"} */}
                       </p>
                       <div className="drop-img d-flex ac-jc">
-                        {/* <img src={droparrow} /> */}
                         <ArrowDropDownIcon className="fs-xxl-35 fs-xl-20 fs-lg-19 fs-sm-15 fs-xs-13" />
                       </div>
                       {openDropdown === lead._id && (
@@ -279,7 +275,7 @@ const FollowLeadeList = ({ data }) => {
             }
             disabled={currentPage === totalPages}
             className={`${
-              currentPage == totalPages ? "opacity-25" : "opacity-100"
+              currentPage === totalPages ? "opacity-25" : "opacity-100"
             } px-3 py-1 mx-1 border-0 rounded white bg-primary3`}
           >
             <ArrowForwardIosOutlinedIcon />

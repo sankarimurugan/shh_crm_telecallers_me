@@ -1,8 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { droparrow } from "../../assets/images";
-import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
-import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import { leadliststatus, leadsList, leadstatus } from "../../Data/DummyJson";
+import { leadliststatus } from "../../Data/DummyJson";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -279,7 +276,7 @@ const EnrollementLeadeList = ({ data }) => {
             }
             disabled={currentPage === totalPages}
             className={`${
-              currentPage == totalPages ? "opacity-25" : "opacity-100"
+              currentPage === totalPages ? "opacity-25" : "opacity-100"
             } px-3 py-1 mx-1 border-0 rounded white bg-primary3`}
           >
             <ArrowForwardIosOutlinedIcon />

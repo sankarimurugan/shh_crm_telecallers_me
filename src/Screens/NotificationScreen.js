@@ -16,7 +16,7 @@ const NotificationScreen = () => {
   const dispatch = useDispatch();
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { user, setUser } = useUser();
+  const { user } = useUser();
 
   console.log("user", user);
   const telecalerId = user?.telecaller?.id;
@@ -58,7 +58,7 @@ const NotificationScreen = () => {
     console.log("temsss", item);
     const data = item?.leadDetails;
     if (item?.isRead) {
-      if (data?.status == "Approved") {
+      if (data?.status === "Approved") {
         toast.info("Payment Proof Approved");
       } else {
         navigate("/telecallers/leads/details", {
@@ -88,12 +88,13 @@ const NotificationScreen = () => {
 
   useEffect(() => {
     notificationGetFun();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       {loading && <PageLoad />}
-      {notifications?.length == 0 && !loading ? (
+      {notifications?.length === 0 && !loading ? (
         <EmptyComp text={"Notification Not Found"} />
       ) : (
         !loading && (
@@ -124,7 +125,7 @@ const NotificationScreen = () => {
                     >
                       <div className="noti-header">
                         <h4 className="f6 fs-xxl-16 fs-xl-15 fs-lg-14 fs-sm-13 fs-xs-13 textani black">
-                          {item?.type == "lead_created" &&
+                          {item?.type === "lead_created" &&
                             "New Lead assigned to You!"}
                         </h4>
                       </div>

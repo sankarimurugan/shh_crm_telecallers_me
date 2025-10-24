@@ -8,6 +8,7 @@ const ImportPoppup = ({ poppupHandle }) => {
   const [fileName, setFileName] = useState("");
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState([]);
+  console.log("fileName", fileName);
 
   const [bulkUplloadApi] = useBulkleaduplloadMutation();
 
@@ -62,7 +63,7 @@ const ImportPoppup = ({ poppupHandle }) => {
         className="poppup-layer border-0"
         onClick={() => poppupHandle(null)}
       />
-      {apiError?.length == 0 && (
+      {apiError?.length === 0 && (
         <div className="logout-cont w-md-40 w-80 rounded-3 p-md-3 p-4 d-flex gap-4 ac-jc flex-column">
           <div className="d-flex ac-jc flex-column gap-md-4 gap-2 w-100">
             <input

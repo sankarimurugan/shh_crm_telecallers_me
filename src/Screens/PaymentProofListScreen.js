@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { mini_time, pro_icon, proof_img } from "../assets/images";
+import { mini_time, proof_img } from "../assets/images";
 import { useLocation, useNavigate } from "react-router-dom";
 import PageLoad from "../Components/common/Loading/PageLoad";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import RestoreSharpIcon from "@mui/icons-material/RestoreSharp";
-import DummyComp from "../Components/DummyComp";
 import {
   useLazyAll_proof_listQuery,
   useLazyLeads_payment_proofQuery,
@@ -71,7 +69,7 @@ const PaymentProofListScreen = () => {
 
   const dataGetFun = () => {
     setLoadin(true);
-    if (type == "view") {
+    if (type === "view") {
       const id = RouteData?._id;
       paymentList(id)
         .unwrap()
@@ -112,6 +110,7 @@ const PaymentProofListScreen = () => {
   };
   useEffect(() => {
     dataGetFun();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log("lasodfjw hbug", RouteData);
@@ -158,7 +157,7 @@ const PaymentProofListScreen = () => {
             {/* )} */}
           </div>
           <div className="payment-container rounded-3">
-            {filteredpayments?.length == 0 ? (
+            {filteredpayments?.length === 0 ? (
               <EmptyComp text={"Payment Proof Not Found"} />
             ) : (
               <div className="payment-list">
@@ -185,12 +184,13 @@ const PaymentProofListScreen = () => {
                       }}
                       key={item.id}
                       className={`payment-card d-flex ac-jb w-100  ${
-                        !item.status == "Pending" ? "unread" : ""
+                        !item.status === "Pending" ? "unread" : ""
                       }`}
                     >
                       <div className="d-flex ac-js">
                         <div className="proofimgs d-flex ac-jc me-3">
                           <img
+                            alt=""
                             crossOrigin="anonymous"
                             src={item?.image || proof_img}
                           />
@@ -223,6 +223,7 @@ const PaymentProofListScreen = () => {
                         <p className="fs-xxl-13  mt-3 mb-0 fs-xl-13 fs-lg-13 fs-sm-12 fs-xs-11 f3 black">
                           {date} |
                           <img
+                            alt=""
                             className="mx-1"
                             src={mini_time}
                             style={{

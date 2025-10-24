@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import EnquiriesList from "../Components/Enquiries/EnquiriesList";
-import { leadsList } from "../Data/DummyJson";
 import { useLazyLead_listQuery } from "../Data/Api/api";
 import EmptyComp from "../Components/common/Empty/EmptyComp";
 import PageLoad from "../Components/common/Loading/PageLoad";
@@ -10,7 +9,7 @@ const EnquiriesScreen = () => {
   const [datalist, setDataLisst] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { user, setUser } = useUser();
+  const { user } = useUser();
   console.log("telssuser", user);
 
   const telID = user?.telecaller?.id;
@@ -41,12 +40,13 @@ const EnquiriesScreen = () => {
 
   useEffect(() => {
     leadListFun();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
       {loading && <PageLoad />}
-      {datalist?.length == 0 && !loading ? (
+      {datalist?.length===0 && !loading ? (
         <EmptyComp text={"Enquiry Not Found"} />
       ) : (
         !loading && (

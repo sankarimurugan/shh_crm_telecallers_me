@@ -1,18 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-
-import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
-import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import React, { useEffect, useState } from "react";
 
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
-import { paymentList } from "../../Data/DummyJson";
 import { useNavigate } from "react-router-dom";
 
 const ListPayment = ({ historyData }) => {
-  const incoiceRef = useRef(null);
-
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [selectedStatus, setSelectedStatus] = useState("status");
+  // const [setSelectedStatus] = useState("status");
 
   const [currentPage, setCurrentPage] = useState(1);
   const leadsPerPage = 5;
@@ -35,13 +29,13 @@ const ListPayment = ({ historyData }) => {
     };
   }, []);
 
-  const handleStatusChange = (leadId, status) => {
-    setSelectedStatus((prevStatuses) => ({
-      ...prevStatuses,
-      [leadId]: status, // Update status for the specific lead
-    }));
-    setOpenDropdown(null); // Close dropdown after selection
-  };
+  // const handleStatusChange = (leadId, status) => {
+  //   setSelectedStatus((prevStatuses) => ({
+  //     ...prevStatuses,
+  //     [leadId]: status, // Update status for the specific lead
+  //   }));
+  //   setOpenDropdown(null); // Close dropdown after selection
+  // };
 
   const indexOfLastLead = currentPage * leadsPerPage;
   const indexOfFirstLead = indexOfLastLead - leadsPerPage;
@@ -179,7 +173,7 @@ const ListPayment = ({ historyData }) => {
             }
             disabled={currentPage === totalPages}
             className={`${
-              currentPage == totalPages ? "opacity-25" : "opacity-100"
+              currentPage === totalPages ? "opacity-25" : "opacity-100"
             } px-3 py-1 mx-1 border-0 rounded white bg-primary3`}
           >
             <ArrowForwardIosOutlinedIcon />

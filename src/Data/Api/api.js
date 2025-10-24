@@ -1,7 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL, URL } from "./const";
-import useToken from "../Local/userToken";
-import { CheckBoxOutlineBlankOutlined } from "@mui/icons-material";
 
 export const api = createApi({
   reducerPath: "api",

@@ -27,10 +27,8 @@ const TelecallersDashboardScreen = () => {
     updatesLeads: 0,
   });
 
-  const { user, setUser } = useUser();
+  const { user } = useUser();
   console.log("telssuser", user);
-
-  const telID = user?.telecaller?.id;
 
   // Api
   const [LeadsGetApi] = useLazyLead_listQuery();
@@ -43,13 +41,13 @@ const TelecallersDashboardScreen = () => {
         // AllData
         const fulldata = res?.data;
         const allPendingLeads = fulldata.filter(
-          (lead) => lead.status == "Enquiry"
+          (lead) => lead.status === "Enquiry"
         );
         const allenrolledLeads = fulldata.filter(
-          (lead) => lead.status == "Enrollment"
+          (lead) => lead.status === "Enrollment"
         );
         const allfollowLeads = fulldata.filter(
-          (lead) => lead.status == "Follow Ups"
+          (lead) => lead.status === "Follow Ups"
         );
 
         const today = new Date();
@@ -69,10 +67,10 @@ const TelecallersDashboardScreen = () => {
           return leadDate === todayDateOnly;
         });
         const TdyPendingdLeads = todaysLeads.filter(
-          (lead) => lead.status == "Enquiry"
+          (lead) => lead.status === "Enquiry"
         );
         const enrolledLeads = updatesLeads.filter(
-          (lead) => lead.status == "Enrollment"
+          (lead) => lead.status === "Enrollment"
         );
         // Today only end
         console.log("TodayFull lead", todaysLeads);
@@ -115,6 +113,7 @@ const TelecallersDashboardScreen = () => {
   };
   useEffect(() => {
     dataGetFun();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -145,7 +144,7 @@ const TelecallersDashboardScreen = () => {
               </button> */}
             </div>
             <div className="imgcont d-flex ac-jc">
-              <img src={speakericon} />
+              <img src={speakericon}  alt="speacker"/>
             </div>
             {/* <button className="iconabsolute border-0 d-flex ac-jc rounded-5">
             <EastOutlinedIcon className="primary3" />
@@ -164,7 +163,7 @@ const TelecallersDashboardScreen = () => {
               </p>
             </div>
             <div className="imgcont d-flex ac-jc">
-              <img src={sandclock} />
+              <img src={sandclock} alt="sankclock" />
             </div>
             <button
               onClick={() => {
@@ -190,7 +189,7 @@ const TelecallersDashboardScreen = () => {
               </p>
             </div>
             <div className="imgcont d-flex ac-jc">
-              <img src={leadicon} />
+              <img src={leadicon} alt="location"/>
             </div>
             <button
               onClick={() => {
@@ -216,7 +215,7 @@ const TelecallersDashboardScreen = () => {
               </p>
             </div>
             <div className="imgcont d-flex ac-jc">
-              <img src={calendericon} />
+              <img src={calendericon} alt="calender" />
             </div>
             <button
               onClick={() => {

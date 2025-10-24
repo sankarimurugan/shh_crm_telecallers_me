@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { paymentproofForm } from "../Data/DummyJson";
-import { addproof_icon, proof_img } from "../assets/images";
+import { addproof_icon } from "../assets/images";
 import PageLoad from "../Components/common/Loading/PageLoad";
 import {
   useLazyLead_listQuery,
   useLazyPayment_methodsQuery,
   useLazyPaymentProofViewQuery,
-  useLeadeditMutation,
   useLeadpayment_proof_addMutation,
   usePayment_proofEditMutation,
 } from "../Data/Api/api";
@@ -37,7 +36,6 @@ const PaymentProofAddScreen = () => {
   const [getleadApi] = useLazyLead_listQuery();
   const [payproofAdd] = useLeadpayment_proof_addMutation();
   const [paymentmethodApi] = useLazyPayment_methodsQuery();
-  const [leadeditApi] = useLeadeditMutation();
   const [proofViewApi] = useLazyPaymentProofViewQuery();
   const [proofEditApi] = usePayment_proofEditMutation();
 
@@ -104,7 +102,7 @@ const PaymentProofAddScreen = () => {
       if (imageObj) {
         formdata.append("image", imageObj);
       }
-      if (type == "view") {
+      if (type === "view") {
         const id = RouteData?._id;
         proofEditApi({ formdata: formdata, id: id })
           .unwrap()
@@ -159,16 +157,16 @@ const PaymentProofAddScreen = () => {
       .unwrap()
       .then((res) => {
         console.log("viedhures", res);
-        const getuser = res?.data?.find((item) => item?._id == RouteData?._id);
+        const getuser = res?.data?.find((item) => item?._id === RouteData?._id);
         console.log("getuserId", getuser);
         if (getuser) {
           handleInputChange("studentname", getuser?.name); // or getuser._id if you're using id
         }
-        if (type == "view") {
+        if (type === "view") {
           setLeadList(res?.data || []);
         } else {
           const leadlists = res?.data?.filter(
-            (item) => item?.fullyPaid == false
+            (item) => item?.fullyPaid === false
           );
           console.log("leadlists", leadlists);
           setLeadList(leadlists || []);
@@ -246,11 +244,11 @@ const PaymentProofAddScreen = () => {
   };
 
   useEffect(() => {
-    // RouteData?.status == "Approved"
-    if (type == "add") {
+    // RouteData?.status==="Approved"
+    if (type === "add") {
       console.log("Addddes leaddd");
       dataGetFun();
-    } else if (type == "view") {
+    } else if (type === "view") {
       console.log("viewww leaddd");
       proofViewwFun();
       dataGetFun();
@@ -259,6 +257,7 @@ const PaymentProofAddScreen = () => {
       proofViewwFun();
     }
     paymentMethodFun();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log("leadIdleadIdleadId", leadId, formFeald);
@@ -394,7 +393,7 @@ const PaymentProofAddScreen = () => {
                         style={{ display: "none" }}
                         onChange={handleImageChange}
                       />
-                      {errors.image && image == null && (
+                      {errors.image && image === null && (
                         <p className="mb-0 red f3 fs-xxl-12 fs-xl-12 fs-lg-11 fs-sm-10 fs-xs-10 textani mt-2">
                           {errors.image}
                         </p>
@@ -411,7 +410,7 @@ const PaymentProofAddScreen = () => {
                     onClick={handleSubmit}
                     className="refil-box white f4 mt-3 d-flex ac-jc bg-primary3 rounded-3 border-0"
                   >
-                    {type == "view" ? "Update" : "Submit"}
+                    {type === "view" ? "Update" : "Submit"}
                   </button>
                 </div>
               </fieldset>
@@ -541,7 +540,7 @@ const PaymentProofAddScreen = () => {
                         style={{ display: "none" }}
                         onChange={handleImageChange}
                       />
-                      {errors.image && image == null && (
+                      {errors.image && image === null && (
                         <p className="mb-0 red f3 fs-xxl-12 fs-xl-12 fs-lg-11 fs-sm-10 fs-xs-10 textani mt-2">
                           {errors.image}
                         </p>
